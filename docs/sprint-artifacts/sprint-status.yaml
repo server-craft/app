@@ -1,0 +1,78 @@
+# ServerCraft Sprint Status Tracking
+# Generated: 2025-11-23
+#
+# Status values: backlog | in_progress | review | done
+# Retrospectives: optional | pending | done
+
+project: ServerCraft
+version: 1.0.0
+last_updated: 2025-11-23
+
+# Development Status - All Epics and Stories
+development_status:
+  # Epic 1: Foundation & Project Setup
+  epic-1: backlog
+  1-1-initialize-wails-project: review
+  1-2-database-setup-core-models: backlog
+  1-3-application-shell-navigation: backlog
+  1-4-settings-configuration-management: backlog
+  1-5-error-handling-logging: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: Server Inventory Management
+  epic-2: backlog
+  2-1-organization-management: backlog
+  2-2-group-management: backlog
+  2-3-server-crud-operations: backlog
+  2-4-credential-storage-keychain: backlog
+  2-5-server-health-dashboard: backlog
+  2-6-labeling-tagging-system: backlog
+  2-7-multi-provider-configuration: backlog
+  2-8-certificate-based-authentication: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: SSH Terminal & Connectivity
+  epic-3: backlog
+  3-1-ssh-connection-pool: backlog
+  3-2-embedded-terminal-xterm: backlog
+  3-3-multi-tab-terminal-management: backlog
+  3-4-command-broadcast-server-groups: backlog
+  3-5-snippet-library-management: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Docker Container Management
+  epic-4: backlog
+  4-1-container-listing-status: backlog
+  4-2-container-lifecycle-operations: backlog
+  4-3-container-logs-viewer: backlog
+  4-4-container-shell-access: backlog
+  4-5-docker-compose-deployment: backlog
+  4-6-container-resource-monitoring: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Task Automation
+  epic-5: backlog
+  5-1-task-execution-engine: backlog
+  5-2-predefined-task-library: backlog
+  5-3-task-progress-monitoring: backlog
+  5-4-scheduled-task-execution: backlog
+  5-5-task-history-management: backlog
+  epic-5-retrospective: optional
+
+  # Epic 6: Audit & Compliance
+  epic-6: backlog
+  6-1-audit-event-capture: backlog
+  6-2-audit-log-viewer: backlog
+  6-3-audit-export-functionality: backlog
+  epic-6-retrospective: optional
+
+# Summary Statistics
+summary:
+  total_epics: 6
+  total_stories: 32
+  total_retrospectives: 6
+  stories_by_status:
+    backlog: 32
+    in_progress: 0
+    review: 0
+    done: 0

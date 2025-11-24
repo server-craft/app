@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServerCraft - Color Theme Options</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #fafafa;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            .themes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .theme-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .theme-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .theme-number {
+            font-size: 0.875rem;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+        }
+
+        .theme-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .theme-personality {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .theme-content {
+            padding: 1.5rem;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            text-align: center;
+        }
+
+        .swatch {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-bottom: 0.25rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .swatch-label {
+            font-size: 0.625rem;
+            opacity: 0.7;
+        }
+
+        .components-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid;
+        }
+
+        .btn-ghost {
+            background: transparent;
+        }
+
+        .input-demo {
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            width: 100%;
+            border: 1px solid;
+        }
+
+        .card-demo {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .card-metric {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .status-row {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .nav-demo {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.25rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+        }
+
+        .nav-item {
+            padding: 0.375rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .best-for {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.75rem;
+        }
+
+        .best-for-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Theme 1: Deep Ocean */
+        .theme-1 {
+            background: #0c1222;
+        }
+        .theme-1 .theme-header {
+            background: #111827;
+        }
+        .theme-1 .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        .theme-1 .btn-secondary {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .theme-1 .btn-ghost {
+            color: #94a3b8;
+        }
+        .theme-1 .btn-ghost:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        .theme-1 .input-demo {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        .theme-1 .card-demo {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        .theme-1 .card-metric {
+            color: #3b82f6;
+        }
+        .theme-1 .nav-demo {
+            background: #1e293b;
+        }
+        .theme-1 .nav-item.active {
+            background: #3b82f6;
+            color: white;
+        }
+        .theme-1 .nav-item:not(.active) {
+            color: #94a3b8;
+        }
+
+        /* Theme 2: Midnight Forge */
+        .theme-2 {
+            background: #09090b;
+        }
+        .theme-2 .theme-header {
+            background: #18181b;
+        }
+        .theme-2 .btn-primary {
+            background: #a855f7;
+            color: white;
+        }
+        .theme-2 .btn-secondary {
+            border-color: #a855f7;
+            color: #a855f7;
+        }
+        .theme-2 .btn-ghost {
+            color: #a1a1aa;
+        }
+        .theme-2 .btn-ghost:hover {
+            background: rgba(168, 85, 247, 0.1);
+        }
+        .theme-2 .input-demo {
+            background: #27272a;
+            border-color: #3f3f46;
+            color: #fafafa;
+        }
+        .theme-2 .card-demo {
+            background: #27272a;
+            border-color: #3f3f46;
+        }
+        .theme-2 .card-metric {
+            color: #a855f7;
+        }
+        .theme-2 .nav-demo {
+            background: #27272a;
+        }
+        .theme-2 .nav-item.active {
+            background: #a855f7;
+            color: white;
+        }
+        .theme-2 .nav-item:not(.active) {
+            color: #a1a1aa;
+        }
+
+        /* Theme 3: Arctic Steel */
+        .theme-3 {
+            background: #0f172a;
+        }
+        .theme-3 .theme-header {
+            background: #1e293b;
+        }
+        .theme-3 .btn-primary {
+            background: #06b6d4;
+            color: #0f172a;
+        }
+        .theme-3 .btn-secondary {
+            border-color: #06b6d4;
+            color: #06b6d4;
+        }
+        .theme-3 .btn-ghost {
+            color: #94a3b8;
+        }
+        .theme-3 .btn-ghost:hover {
+            background: rgba(6, 182, 212, 0.1);
+        }
+        .theme-3 .input-demo {
+            background: #1e293b;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        .theme-3 .card-demo {
+            background: #1e293b;
+            border-color: #334155;
+        }
+        .theme-3 .card-metric {
+            color: #06b6d4;
+        }
+        .theme-3 .nav-demo {
+            background: #1e293b;
+        }
+        .theme-3 .nav-item.active {
+            background: #06b6d4;
+            color: #0f172a;
+        }
+        .theme-3 .nav-item:not(.active) {
+            color: #94a3b8;
+        }
+
+        /* Theme 4: Emerald Terminal */
+        .theme-4 {
+            background: #022c22;
+        }
+        .theme-4 .theme-header {
+            background: #064e3b;
+        }
+        .theme-4 .btn-primary {
+            background: #10b981;
+            color: #022c22;
+        }
+        .theme-4 .btn-secondary {
+            border-color: #10b981;
+            color: #10b981;
+        }
+        .theme-4 .btn-ghost {
+            color: #6ee7b7;
+        }
+        .theme-4 .btn-ghost:hover {
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .theme-4 .input-demo {
+            background: #064e3b;
+            border-color: #065f46;
+            color: #ecfdf5;
+        }
+        .theme-4 .card-demo {
+            background: #064e3b;
+            border-color: #065f46;
+        }
+        .theme-4 .card-metric {
+            color: #10b981;
+        }
+        .theme-4 .nav-demo {
+            background: #064e3b;
+        }
+        .theme-4 .nav-item.active {
+            background: #10b981;
+            color: #022c22;
+        }
+        .theme-4 .nav-item:not(.active) {
+            color: #6ee7b7;
+        }
+    </style>
+</head>
+<body>
+    <h1>ServerCraft Color Themes</h1>
+    <p class="subtitle">Choose a theme that feels "efficient and productive" for your power users</p>
+
+    <div class="themes-grid">
+        <!-- Theme 1: Deep Ocean -->
+        <div class="theme-card theme-1">
+            <div class="theme-header">
+                <div class="theme-number">Theme 1</div>
+                <div class="theme-name">Deep Ocean</div>
+                <div class="theme-personality">Professional • Trustworthy • Calm</div>
+            </div>
+            <div class="theme-content">
+                <div class="color-palette">
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #3b82f6;"></div>
+                        <div class="swatch-label">Primary<br>#3b82f6</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #0c1222;"></div>
+                        <div class="swatch-label">Background<br>#0c1222</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #1e293b;"></div>
+                        <div class="swatch-label">Surface<br>#1e293b</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #22c55e;"></div>
+                        <div class="swatch-label">Success<br>#22c55e</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #ef4444;"></div>
+                        <div class="swatch-label">Error<br>#ef4444</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #f59e0b;"></div>
+                        <div class="swatch-label">Warning<br>#f59e0b</div>
+                    </div>
+                </div>
+
+                <div class="components-demo">
+                    <div class="button-row">
+                        <button class="btn btn-primary">Connect</button>
+                        <button class="btn btn-secondary">Terminal</button>
+                        <button class="btn btn-ghost">Cancel</button>
+                    </div>
+
+                    <input class="input-demo" placeholder="Search servers..." />
+
+                    <div class="card-demo">
+                        <div class="card-title">Production Servers</div>
+                        <div class="card-metric">12 Online</div>
+                        <div class="status-row">
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #22c55e;"></div>
+                                CPU 45%
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #f59e0b;"></div>
+                                Memory 78%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-demo">
+                        <div class="nav-item active">Dashboard</div>
+                        <div class="nav-item">Servers</div>
+                        <div class="nav-item">Tasks</div>
+                    </div>
+                </div>
+
+                <div class="best-for">
+                    <div class="best-for-label">Best for:</div>
+                    Enterprise teams, agencies managing client infrastructure. Conveys reliability and professionalism.
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme 2: Midnight Forge -->
+        <div class="theme-card theme-2">
+            <div class="theme-header">
+                <div class="theme-number">Theme 2</div>
+                <div class="theme-name">Midnight Forge</div>
+                <div class="theme-personality">Technical • Modern • Bold</div>
+            </div>
+            <div class="theme-content">
+                <div class="color-palette">
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #a855f7;"></div>
+                        <div class="swatch-label">Primary<br>#a855f7</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #09090b;"></div>
+                        <div class="swatch-label">Background<br>#09090b</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #27272a;"></div>
+                        <div class="swatch-label">Surface<br>#27272a</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #22c55e;"></div>
+                        <div class="swatch-label">Success<br>#22c55e</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #ef4444;"></div>
+                        <div class="swatch-label">Error<br>#ef4444</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #f59e0b;"></div>
+                        <div class="swatch-label">Warning<br>#f59e0b</div>
+                    </div>
+                </div>
+
+                <div class="components-demo">
+                    <div class="button-row">
+                        <button class="btn btn-primary">Connect</button>
+                        <button class="btn btn-secondary">Terminal</button>
+                        <button class="btn btn-ghost">Cancel</button>
+                    </div>
+
+                    <input class="input-demo" placeholder="Search servers..." />
+
+                    <div class="card-demo">
+                        <div class="card-title">Production Servers</div>
+                        <div class="card-metric">12 Online</div>
+                        <div class="status-row">
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #22c55e;"></div>
+                                CPU 45%
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #f59e0b;"></div>
+                                Memory 78%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-demo">
+                        <div class="nav-item active">Dashboard</div>
+                        <div class="nav-item">Servers</div>
+                        <div class="nav-item">Tasks</div>
+                    </div>
+                </div>
+
+                <div class="best-for">
+                    <div class="best-for-label">Best for:</div>
+                    DevOps engineers, developers. Modern feel like VS Code or GitHub. Stands out from traditional tools.
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme 3: Arctic Steel -->
+        <div class="theme-card theme-3">
+            <div class="theme-header">
+                <div class="theme-number">Theme 3</div>
+                <div class="theme-name">Arctic Steel</div>
+                <div class="theme-personality">Clean • Minimal • Focused</div>
+            </div>
+            <div class="theme-content">
+                <div class="color-palette">
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #06b6d4;"></div>
+                        <div class="swatch-label">Primary<br>#06b6d4</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #0f172a;"></div>
+                        <div class="swatch-label">Background<br>#0f172a</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #1e293b;"></div>
+                        <div class="swatch-label">Surface<br>#1e293b</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #22c55e;"></div>
+                        <div class="swatch-label">Success<br>#22c55e</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #ef4444;"></div>
+                        <div class="swatch-label">Error<br>#ef4444</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #f59e0b;"></div>
+                        <div class="swatch-label">Warning<br>#f59e0b</div>
+                    </div>
+                </div>
+
+                <div class="components-demo">
+                    <div class="button-row">
+                        <button class="btn btn-primary">Connect</button>
+                        <button class="btn btn-secondary">Terminal</button>
+                        <button class="btn btn-ghost">Cancel</button>
+                    </div>
+
+                    <input class="input-demo" placeholder="Search servers..." />
+
+                    <div class="card-demo">
+                        <div class="card-title">Production Servers</div>
+                        <div class="card-metric">12 Online</div>
+                        <div class="status-row">
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #22c55e;"></div>
+                                CPU 45%
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #f59e0b;"></div>
+                                Memory 78%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-demo">
+                        <div class="nav-item active">Dashboard</div>
+                        <div class="nav-item">Servers</div>
+                        <div class="nav-item">Tasks</div>
+                    </div>
+                </div>
+
+                <div class="best-for">
+                    <div class="best-for-label">Best for:</div>
+                    Users who want distraction-free interface. Clean, Nordic-inspired aesthetic. Easy on the eyes for long sessions.
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme 4: Emerald Terminal -->
+        <div class="theme-card theme-4">
+            <div class="theme-header">
+                <div class="theme-number">Theme 4</div>
+                <div class="theme-name">Emerald Terminal</div>
+                <div class="theme-personality">Classic • Familiar • Growth</div>
+            </div>
+            <div class="theme-content">
+                <div class="color-palette">
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #10b981;"></div>
+                        <div class="swatch-label">Primary<br>#10b981</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #022c22;"></div>
+                        <div class="swatch-label">Background<br>#022c22</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #064e3b;"></div>
+                        <div class="swatch-label">Surface<br>#064e3b</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #34d399;"></div>
+                        <div class="swatch-label">Success<br>#34d399</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #ef4444;"></div>
+                        <div class="swatch-label">Error<br>#ef4444</div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="swatch" style="background: #fbbf24;"></div>
+                        <div class="swatch-label">Warning<br>#fbbf24</div>
+                    </div>
+                </div>
+
+                <div class="components-demo">
+                    <div class="button-row">
+                        <button class="btn btn-primary">Connect</button>
+                        <button class="btn btn-secondary">Terminal</button>
+                        <button class="btn btn-ghost">Cancel</button>
+                    </div>
+
+                    <input class="input-demo" placeholder="Search servers..." />
+
+                    <div class="card-demo">
+                        <div class="card-title">Production Servers</div>
+                        <div class="card-metric">12 Online</div>
+                        <div class="status-row">
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #34d399;"></div>
+                                CPU 45%
+                            </div>
+                            <div class="status-item">
+                                <div class="status-dot" style="background: #fbbf24;"></div>
+                                Memory 78%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-demo">
+                        <div class="nav-item active">Dashboard</div>
+                        <div class="nav-item">Servers</div>
+                        <div class="nav-item">Tasks</div>
+                    </div>
+                </div>
+
+                <div class="best-for">
+                    <div class="best-for-label">Best for:</div>
+                    Traditional sysadmins, homelab enthusiasts. Nostalgic terminal feel. Green = "all systems go".
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

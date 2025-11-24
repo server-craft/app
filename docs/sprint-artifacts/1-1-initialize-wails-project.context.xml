@@ -1,0 +1,177 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1</storyId>
+    <title>Initialize Wails Project</title>
+    <status>drafted</status>
+    <generatedAt>2025-11-23</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/sprint-artifacts/1-1-initialize-wails-project.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>developer</asA>
+    <iWant>the project initialized with Wails and all dependencies</iWant>
+    <soThat>I have a working development environment</soThat>
+    <tasks>
+      <task id="1" ac="1">Install Wails CLI and verify environment
+        <subtask>Install Wails CLI v2.11.0</subtask>
+        <subtask>Run wails doctor to verify prerequisites</subtask>
+        <subtask>Document any missing dependencies</subtask>
+      </task>
+      <task id="2" ac="1">Initialize Wails project with React-TS template
+        <subtask>Run wails init -n servercraft -t react-ts</subtask>
+        <subtask>Verify project structure is created correctly</subtask>
+        <subtask>Test initial wails dev runs without errors</subtask>
+      </task>
+      <task id="3" ac="2">Install and configure Go dependencies
+        <subtask>Install GORM</subtask>
+        <subtask>Install zap</subtask>
+        <subtask>Install go-keyring</subtask>
+        <subtask>Install SSH</subtask>
+        <subtask>Install testify</subtask>
+        <subtask>Run go mod tidy</subtask>
+      </task>
+      <task id="4" ac="3">Install and configure frontend dependencies
+        <subtask>Install core deps: zustand, react-query, xterm</subtask>
+        <subtask>Initialize shadcn/ui</subtask>
+        <subtask>Install and configure Tailwind</subtask>
+        <subtask>Install testing deps: vitest, RTL</subtask>
+      </task>
+      <task id="5" ac="4,5">Configure project structure foundations
+        <subtask>Create frontend directory structure</subtask>
+        <subtask>Create internal Go package structure</subtask>
+        <subtask>Set up basic TypeScript types</subtask>
+        <subtask>Configure Vitest</subtask>
+      </task>
+      <task id="6" ac="4,5">Verify development environment
+        <subtask>Run wails dev and verify app starts</subtask>
+        <subtask>Test Go hot reload</subtask>
+        <subtask>Test React hot reload</subtask>
+        <subtask>Run frontend tests</subtask>
+        <subtask>Run Go tests</subtask>
+      </task>
+      <task id="7" ac="4">Configure VS Code workspace
+        <subtask>Create .vscode/settings.json</subtask>
+        <subtask>Create .vscode/extensions.json</subtask>
+        <subtask>Verify linting and formatting</subtask>
+      </task>
+    </tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criterion id="1">Given a fresh development machine with Go 1.21+ and Node 18+, When I run the project initialization commands, Then the Wails project is created with React-TS template</criterion>
+    <criterion id="2">All Go dependencies are installed: GORM, zap, go-keyring, x/crypto/ssh, testify</criterion>
+    <criterion id="3">All frontend dependencies are installed: Zustand, xterm.js, shadcn/ui, Tailwind, Vitest, RTL, react-query</criterion>
+    <criterion id="4">wails dev starts the application without errors</criterion>
+    <criterion id="5">Hot reload works for both Go and React changes</criterion>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>ServerCraft Architecture</title>
+        <section>Project Initialization</section>
+        <snippet>First implementation story should execute: wails init -n servercraft -t react-ts. This establishes the base architecture with Wails v2.11.0, React 18.x with TypeScript, and Vite build tooling.</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>ServerCraft Architecture</title>
+        <section>Project Structure</section>
+        <snippet>Complete directory structure for frontend (components, stores, hooks, lib, types) and internal Go packages (app, models, database, ssh, docker, tasks, credentials, audit, monitor).</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>ServerCraft Architecture</title>
+        <section>Development Environment</section>
+        <snippet>Prerequisites: Go 1.21+, Node.js 18+, Wails CLI v2.11.0. Platform-specific: macOS Xcode CLI Tools, Linux libgtk-3-dev libwebkit2gtk-4.0-dev, Windows WebView2.</snippet>
+      </doc>
+      <doc>
+        <path>docs/architecture.md</path>
+        <title>ServerCraft Architecture</title>
+        <section>Decision Summary</section>
+        <snippet>Technology decisions: Wails 2.11.0, React 18.x, TypeScript 5.x, Zustand, shadcn/ui, Tailwind CSS 3.x, GORM, golang.org/x/crypto/ssh, xterm.js, go-keyring, zap, testify, Vitest + RTL.</snippet>
+      </doc>
+      <doc>
+        <path>docs/epics.md</path>
+        <title>ServerCraft Epic Breakdown</title>
+        <section>Story 1.1: Initialize Wails Project</section>
+        <snippet>Acceptance criteria for project initialization including wails init command, all dependency installation, hot reload verification, and VS Code configuration.</snippet>
+      </doc>
+      <doc>
+        <path>docs/prd.md</path>
+        <title>Product Requirements Document</title>
+        <section>Technical Architecture</section>
+        <snippet>Frontend/Desktop Framework: Wails (Go + Web Tech). User prefers Go. Wails allows backend logic entirely in Go while using web technologies for UI.</snippet>
+      </doc>
+    </docs>
+    <code>
+      <!-- Greenfield project - no existing code artifacts -->
+      <note>This is the first story in a greenfield project. No existing code to reference. All code will be newly created.</note>
+    </code>
+    <dependencies>
+      <go>
+        <package>gorm.io/gorm</package>
+        <package>gorm.io/driver/sqlite</package>
+        <package>go.uber.org/zap</package>
+        <package>github.com/zalando/go-keyring</package>
+        <package>golang.org/x/crypto/ssh</package>
+        <package>github.com/stretchr/testify</package>
+      </go>
+      <node>
+        <package>zustand</package>
+        <package>@tanstack/react-query</package>
+        <package>xterm</package>
+        <package>xterm-addon-fit</package>
+        <package dev="true">tailwindcss</package>
+        <package dev="true">postcss</package>
+        <package dev="true">autoprefixer</package>
+        <package dev="true">vitest</package>
+        <package dev="true">@testing-library/react</package>
+        <package dev="true">@testing-library/jest-dom</package>
+      </node>
+      <tools>
+        <tool>shadcn-ui@latest (npx init)</tool>
+        <tool>wails v2.11.0</tool>
+      </tools>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="platform">macOS requires Xcode Command Line Tools</constraint>
+    <constraint type="platform">Linux requires libgtk-3-dev libwebkit2gtk-4.0-dev</constraint>
+    <constraint type="platform">Windows requires WebView2 runtime</constraint>
+    <constraint type="architecture">Use wails init -n servercraft -t react-ts template</constraint>
+    <constraint type="structure">Create internal/ directory for all Go packages (private)</constraint>
+    <constraint type="structure">Create frontend/src/ with components, stores, hooks, lib, types subdirectories</constraint>
+    <constraint type="naming">Go: PascalCase exports, camelCase private, snake_case JSON tags</constraint>
+    <constraint type="naming">React: PascalCase components, camelCase functions/variables</constraint>
+    <constraint type="naming">Database: snake_case tables/columns</constraint>
+    <constraint type="testing">Frontend: Vitest with React Testing Library</constraint>
+    <constraint type="testing">Backend: Go standard testing with testify assertions</constraint>
+  </constraints>
+
+  <interfaces>
+    <!-- No interfaces defined yet - this is project initialization -->
+    <note>This story establishes the project foundation. Interfaces will be defined in subsequent stories (1.2+).</note>
+  </interfaces>
+
+  <tests>
+    <standards>
+      Frontend tests use Vitest with React Testing Library for component testing. Tests should be co-located with components (Component.test.tsx). Backend tests use Go standard testing package with testify for assertions and mocking. Follow table-driven test patterns for Go.
+    </standards>
+    <locations>
+      <location>frontend/src/**/*.test.tsx</location>
+      <location>frontend/src/**/*.test.ts</location>
+      <location>internal/**/*_test.go</location>
+    </locations>
+    <ideas>
+      <idea ac="4">Verify wails dev starts without errors by checking process exit code and no error output</idea>
+      <idea ac="5">Test Go hot reload by modifying a binding and verifying frontend receives updated response</idea>
+      <idea ac="5">Test React hot reload by modifying component and verifying change appears without full reload</idea>
+      <idea ac="3">Run npm test to verify Vitest is configured correctly with a sample test</idea>
+      <idea ac="2">Run go test ./... to verify testify is available and a sample test passes</idea>
+    </ideas>
+  </tests>
+</story-context>
